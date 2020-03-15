@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "package": "me.joezwet.fabricforwarding.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "server": [
+    "ClientConnectionMixin",
+    "HandshakeC2SPacketAccessor",
+    "HandshakeC2SPacketMixin",
+    "MinecraftServerAccessor",
+    "MinecraftServerMixin",
+    "ServerHandshakeNetworkHandlerMixin",
+    "ServerLoginNetworkHandlerMixin",
+    "LoginQueryResponseC2SPacketAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
