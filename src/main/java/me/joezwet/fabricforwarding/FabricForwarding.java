@@ -13,8 +13,8 @@ import org.apache.logging.log4j.Logger;
 @Environment(EnvType.SERVER)
 public class FabricForwarding implements DedicatedServerModInitializer {
 
-    public static ConfigManager configManager = new ConfigManagerImpl();
     public static final Logger LOGGER = LogManager.getLogger();
+    public static ConfigManager configManager = new ConfigManagerImpl();
 
     @Override
     public void onInitializeServer() {
