@@ -18,7 +18,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerLoginNetworkHandler;
 import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
-import net.minecraft.util.PacketByteBuf;
+import net.minecraft.network.PacketByteBuf;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -103,9 +103,8 @@ public abstract class ServerLoginNetworkHandlerMixin {
 
     @Inject(method = "onQueryResponse", at = @At("HEAD"), cancellable = true)
     private void onQueryResponse(LoginQueryResponseC2SPacket packet, CallbackInfo info) {
-        if(Config.getInstance().getMode().equals(ForwardingMode.MODERN) &&
-                ((LoginQueryResponseC2SPacketAccessor)packet).getQueryId() == this.velocityLoginMsgId) {
-            PacketByteBuf buf = ((LoginQueryResponseC2SPacketAccessor)packet).getResponse();
+        if(Config.getInstance().getMode().equals(ForwardingMode.MODERN) && packet.queryId == this.velocityLoginMsgId) {
+            PacketByteBuf buf = packet.response;
             if(buf == null) {
                 this.disconnect(new LiteralText("This server requires you to join via a proxy."));
                 info.cancel();

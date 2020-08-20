@@ -4,13 +4,10 @@
   "compatibilityLevel": "JAVA_8",
   "server": [
     "ClientConnectionMixin",
-    "HandshakeC2SPacketAccessor",
     "HandshakeC2SPacketMixin",
-    "MinecraftServerAccessor",
     "MinecraftServerMixin",
     "ServerHandshakeNetworkHandlerMixin",
-    "ServerLoginNetworkHandlerMixin",
-    "LoginQueryResponseC2SPacketAccessor"
+    "ServerLoginNetworkHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

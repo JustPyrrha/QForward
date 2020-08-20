@@ -7,7 +7,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.network.Packet;
 import net.minecraft.network.listener.ServerHandshakePacketListener;
 import net.minecraft.network.packet.c2s.handshake.HandshakeC2SPacket;
-import net.minecraft.util.PacketByteBuf;
+import net.minecraft.network.PacketByteBuf;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -17,8 +17,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public abstract class HandshakeC2SPacketMixin implements Packet<ServerHandshakePacketListener> {
 
     @Redirect(
-            method = "read(Lnet/minecraft/util/PacketByteBuf;)V",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/util/PacketByteBuf;readString(I)Ljava/lang/String;")
+            method = "read(Lnet/minecraft/network/PacketByteBuf;)V",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/network/PacketByteBuf;readString(I)Ljava/lang/String;")
     )
     public String read(final PacketByteBuf buf, final int value) {
 

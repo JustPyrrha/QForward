@@ -11,6 +11,7 @@
   "mixins": [
     "fabricforwarding.mixins.json"
   ],
+  "accessWidener": "fabricforwarding.accesswidener",
   "depends": {
     "fabricloader": ">=0.7.8+build.187",
     "minecraft": "1.15.2"

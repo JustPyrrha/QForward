@@ -7,7 +7,7 @@ import me.joezwet.fabricforwarding.api.config.Config;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.PacketByteBuf;
+import net.minecraft.network.PacketByteBuf;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;

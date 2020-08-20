@@ -35,10 +35,10 @@ public class ServerHandshakeNetworkHandlerMixin {
     @Inject(method = "onHandshake", at = @At("HEAD"))
     private void onHandshake(HandshakeC2SPacket packet, CallbackInfo info) {
         if((Config.getInstance().getMode().equals(ForwardingMode.LEGACY) || Config.getInstance().getMode().equals(ForwardingMode.MODERN)) && packet.getIntendedState().equals(NetworkState.LOGIN)) {
-            String[] addressSplit = ((HandshakeC2SPacketAccessor)packet).getAddress().split("\00\\|", 2)[0].split("\00");
+            String[] addressSplit = packet.address.split("\00\\|", 2)[0].split("\00");
 
             if(addressSplit.length == 3 || addressSplit.length == 4) {
-                ((HandshakeC2SPacketAccessor)packet).setAddress(addressSplit[0]);
+                packet.address = addressSplit[0];
                 ((ClientConnectionBridge)this.connection).setAddress(new InetSocketAddress(addressSplit[1],
                         ((InetSocketAddress)this.connection.getAddress()).getPort()));
                 ((ClientConnectionBridge)this.connection).setSpoofedUUID(UUIDTypeAdapter.fromString(addressSplit[2]));

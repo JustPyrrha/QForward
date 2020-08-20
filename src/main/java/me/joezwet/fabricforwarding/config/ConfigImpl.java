@@ -10,12 +10,16 @@ import net.fabricmc.api.Environment;
 @Environment(EnvType.SERVER)
 public class ConfigImpl implements Config {
 
-    @Expose private ForwardingMode mode = ForwardingMode.OFF;
+    @Expose private String mode = "";
     @Expose private String secret = "";
 
     @Override
     public ForwardingMode getMode() {
-        return this.mode;
+        try {
+            return ForwardingMode.valueOf(this.mode.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            return ForwardingMode.OFF;
+        }
     }
 
     @Override

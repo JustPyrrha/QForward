@@ -6,18 +6,19 @@ plugins {
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-archivesBaseName = project.archives_base_name
-version = project.mod_version
-group = project.maven_group
+archivesBaseName = project.name
+version = "${project.mod}+${project.minecraft}"
+group = project.group
 
 minecraft {
     refmapName = "fabricforwarding.refmap.json"
+    accessWidener "src/main/resources/fabricforwarding.accesswidener"
 }
 
 dependencies {
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    minecraft "com.mojang:minecraft:${project.minecraft}"
+    mappings "net.fabricmc:yarn:${project.minecraft}+build.${project.yarn}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader}"
 }
 
 processResources {
