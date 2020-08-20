@@ -26,4 +26,9 @@ public class ConfigImpl implements Config {
     public byte[] getSecret() {
         return this.secret.getBytes(Charsets.UTF_8);
     }
+
+    @Override
+    public void invalidMode() {
+        this.mode = "OFF";
+    }
 }

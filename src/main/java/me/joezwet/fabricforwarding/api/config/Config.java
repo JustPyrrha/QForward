@@ -13,4 +13,6 @@ public interface Config {
 
     ForwardingMode getMode();
     byte[] getSecret();
+
+    void invalidMode();
 }

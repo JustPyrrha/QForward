@@ -19,7 +19,8 @@ public class FabricForwarding implements DedicatedServerModInitializer {
     @Override
     public void onInitializeServer() {
         if(Config.getInstance().getMode().equals(ForwardingMode.MODERN) && Config.getInstance().getSecret().length == 0) {
-            LOGGER.fatal("Modern IP forwarding enabled but no secret provided, please enter the same secret as the one in your proxy's config.");
+            LOGGER.fatal("Modern IP forwarding enabled but no secret provided, please enter the same secret as the one in your proxy's config. Disabling forwarding.");
+            Config.getInstance().invalidMode();
         }
     }
 }
