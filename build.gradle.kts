@@ -1,6 +1,5 @@
 plugins {
     id("fabric-loom") version "0.7-SNAPSHOT"
-    `maven-publish`
 }
 
 val minecraftVersion = "1.16.2"
@@ -14,6 +13,7 @@ val modName = "FabricForwarding"
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
+    withSourcesJar()
 }
 
 base { archivesBaseName = modName }
@@ -43,27 +43,6 @@ tasks.withType(JavaCompile::class) {
     options.encoding = "UTF-8"
 }
 
-//task sourcesJar(type: Jar, dependsOn: classes) {
-//    classifier = "sources"
-//    from sourceSets.main.allSource
-//}
-
 tasks.jar {
     from("LICENSE")
 }
-//
-//publishing {
-//    publications {
-//        mavenJava(MavenPublication) {
-//            artifact(remapJar) {
-//                builtBy remapJar
-//            }
-//            artifact(sourcesJar) {
-//                builtBy remapSourcesJar
-//            }
-//        }
-//    }
-//    repositories {
-//        // mavenLocal()
-//    }
-//}
