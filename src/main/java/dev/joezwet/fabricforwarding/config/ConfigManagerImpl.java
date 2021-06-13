@@ -1,10 +1,10 @@
-package me.joezwet.fabricforwarding.config;
+package dev.joezwet.fabricforwarding.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import me.joezwet.fabricforwarding.FabricForwarding;
-import me.joezwet.fabricforwarding.api.config.Config;
-import me.joezwet.fabricforwarding.api.config.ConfigManager;
+import dev.joezwet.fabricforwarding.api.config.Config;
+import dev.joezwet.fabricforwarding.api.config.ConfigManager;
+import dev.joezwet.fabricforwarding.FabricForwarding;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.loader.api.FabricLoader;

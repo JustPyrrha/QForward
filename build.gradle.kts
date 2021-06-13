@@ -8,7 +8,7 @@ val yarnBuild = "21"
 val loaderVersion = "0.9.2+build.206"
 
 val modVersion = "2.0.0"
-val modGroup = "me.joezwet"
+val modGroup = "dev.joezwet"
 val modName = "FabricForwarding"
 
 java {

@@ -1,9 +1,9 @@
-package me.joezwet.fabricforwarding;
+package dev.joezwet.fabricforwarding;
 
-import me.joezwet.fabricforwarding.api.config.Config;
-import me.joezwet.fabricforwarding.api.config.ConfigManager;
-import me.joezwet.fabricforwarding.api.network.ForwardingMode;
-import me.joezwet.fabricforwarding.config.ConfigManagerImpl;
+import dev.joezwet.fabricforwarding.api.config.Config;
+import dev.joezwet.fabricforwarding.api.config.ConfigManager;
+import dev.joezwet.fabricforwarding.api.network.ForwardingMode;
+import dev.joezwet.fabricforwarding.config.ConfigManagerImpl;
 import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

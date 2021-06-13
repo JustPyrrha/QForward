@@ -1,9 +1,9 @@
-package me.joezwet.fabricforwarding.proxy;
+package dev.joezwet.fabricforwarding.proxy;
 
 import com.google.common.net.InetAddresses;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-import me.joezwet.fabricforwarding.api.config.Config;
+import dev.joezwet.fabricforwarding.api.config.Config;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.util.Identifier;

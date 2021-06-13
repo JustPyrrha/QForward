@@ -1,13 +1,13 @@
-package me.joezwet.fabricforwarding.mixin;
+package dev.joezwet.fabricforwarding.mixin;
 
 import com.google.common.base.Charsets;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import dev.joezwet.fabricforwarding.api.config.Config;
+import dev.joezwet.fabricforwarding.api.network.ClientConnectionBridge;
+import dev.joezwet.fabricforwarding.api.network.ForwardingMode;
 import io.netty.buffer.Unpooled;
-import me.joezwet.fabricforwarding.api.config.Config;
-import me.joezwet.fabricforwarding.api.network.ForwardingMode;
-import me.joezwet.fabricforwarding.api.network.ClientConnectionBridge;
-import me.joezwet.fabricforwarding.proxy.Velocity;
+import dev.joezwet.fabricforwarding.proxy.Velocity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.network.ClientConnection;

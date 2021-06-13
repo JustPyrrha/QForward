@@ -1,14 +1,13 @@
-package me.joezwet.fabricforwarding.mixin;
+package dev.joezwet.fabricforwarding.mixin;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-import me.joezwet.fabricforwarding.api.network.ClientConnectionBridge;
+import dev.joezwet.fabricforwarding.api.network.ClientConnectionBridge;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.network.ClientConnection;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.gen.Accessor;
 
 import java.net.SocketAddress;
 import java.util.UUID;

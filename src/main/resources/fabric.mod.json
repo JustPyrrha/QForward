@@ -6,7 +6,7 @@
   "license": "GPL-3.0-or-later",
   "environment": "SERVER",
   "entrypoints": {
-    "server": [ "me.joezwet.fabricforwarding.FabricForwarding" ]
+    "server": [ "dev.joezwet.fabricforwarding.FabricForwarding" ]
   },
   "mixins": [
     "fabricforwarding.mixins.json"

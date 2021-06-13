@@ -1,11 +1,11 @@
-package me.joezwet.fabricforwarding.mixin;
+package dev.joezwet.fabricforwarding.mixin;
 
 import com.google.gson.Gson;
 import com.mojang.authlib.properties.Property;
 import com.mojang.util.UUIDTypeAdapter;
-import me.joezwet.fabricforwarding.api.config.Config;
-import me.joezwet.fabricforwarding.api.network.ForwardingMode;
-import me.joezwet.fabricforwarding.api.network.ClientConnectionBridge;
+import dev.joezwet.fabricforwarding.api.config.Config;
+import dev.joezwet.fabricforwarding.api.network.ClientConnectionBridge;
+import dev.joezwet.fabricforwarding.api.network.ForwardingMode;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.network.ClientConnection;

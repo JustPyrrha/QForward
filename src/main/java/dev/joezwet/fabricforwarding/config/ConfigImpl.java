@@ -1,9 +1,9 @@
-package me.joezwet.fabricforwarding.config;
+package dev.joezwet.fabricforwarding.config;
 
 import com.google.common.base.Charsets;
 import com.google.gson.annotations.Expose;
-import me.joezwet.fabricforwarding.api.config.Config;
-import me.joezwet.fabricforwarding.api.network.ForwardingMode;
+import dev.joezwet.fabricforwarding.api.config.Config;
+import dev.joezwet.fabricforwarding.api.network.ForwardingMode;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 

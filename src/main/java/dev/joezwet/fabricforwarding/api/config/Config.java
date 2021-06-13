@@ -1,6 +1,6 @@
-package me.joezwet.fabricforwarding.api.config;
+package dev.joezwet.fabricforwarding.api.config;
 
-import me.joezwet.fabricforwarding.api.network.ForwardingMode;
+import dev.joezwet.fabricforwarding.api.network.ForwardingMode;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 

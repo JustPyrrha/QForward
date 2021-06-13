@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "me.joezwet.fabricforwarding.mixin",
+  "package": "dev.joezwet.fabricforwarding.mixin",
   "compatibilityLevel": "JAVA_8",
   "server": [
     "ClientConnectionMixin",
