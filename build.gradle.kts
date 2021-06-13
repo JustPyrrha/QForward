@@ -6,7 +6,7 @@ val minecraftVersion = "1.17"
 val yarnBuild = "10"
 val loaderVersion = "0.11.3"
 
-val modVersion = "2.1.0"
+val modVersion = "2.2.0"
 val modGroup = "dev.joezwet"
 val modName = "FabricForwarding"
 
