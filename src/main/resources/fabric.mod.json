@@ -4,19 +4,26 @@
   "version": "${version}",
   "name": "FabricForwarding",
   "license": "GPL-3.0-or-later",
-  "environment": "SERVER",
+  "authors": [
+    {
+      "name": "JoeZwet",
+      "contact": {
+        "homepage": "https://joezwet.dev"
+      }
+    }
+  ],
+  "contact": {
+    "sources": "https://github.com/JoeZwet/fabric-forwarding",
+    "issues": "https://github.com/JoeZwet/fabric-forwarding/issues"
+  },
+  "environment": "server",
   "entrypoints": {
     "server": [ "dev.joezwet.fabricforwarding.FabricForwarding" ]
   },
-  "mixins": [
-    "fabricforwarding.mixins.json"
-  ],
+  "mixins": [ "fabricforwarding.mixins.json" ],
   "accessWidener": "fabricforwarding.accesswidener",
   "depends": {
     "fabricloader": ">=0.7.8+build.187",
-    "minecraft": [
-      "1.16.2",
-      "1.16.3"
-    ]
+    "minecraft": ">=1.16 <=1.16.5"
   }
 }
