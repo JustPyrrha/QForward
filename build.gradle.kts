@@ -2,11 +2,11 @@ plugins {
     id("fabric-loom") version "0.7-SNAPSHOT"
 }
 
-val minecraftVersion = "1.16.2"
-val yarnBuild = "21"
-val loaderVersion = "0.9.2+build.206"
+val minecraftVersion = "1.16.5"
+val yarnBuild = "9"
+val loaderVersion = "0.11.3"
 
-val modVersion = "2.0.0"
+val modVersion = "2.1.0"
 val modGroup = "dev.joezwet"
 val modName = "FabricForwarding"
 
