@@ -89,15 +89,9 @@ public abstract class ServerLoginNetworkHandlerMixin {
             PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
             buf.writeVarInt(velocityLoginMsgId);
             buf.writeIdentifier(Velocity.PLAYER_INFO_CHANNEL);
-            //buf.writeBytes(Unpooled.EMPTY_BUFFER);
-            LoginQueryRequestS2CPacket p = new LoginQueryRequestS2CPacket();
-            try {
-                p.read(buf);
-                this.connection.send(p);
-                info.cancel();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            LoginQueryRequestS2CPacket p = new LoginQueryRequestS2CPacket(buf);
+            this.connection.send(p);
+            info.cancel();
         }
     }
 

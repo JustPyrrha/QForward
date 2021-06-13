@@ -1,7 +1,7 @@
 {
   "required": true,
   "package": "dev.joezwet.fabricforwarding.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_16",
   "server": [
     "ClientConnectionMixin",
     "HandshakeC2SPacketMixin",

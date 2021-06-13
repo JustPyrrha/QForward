@@ -2,8 +2,8 @@ plugins {
     id("fabric-loom") version "0.7-SNAPSHOT"
 }
 
-val minecraftVersion = "1.16.5"
-val yarnBuild = "9"
+val minecraftVersion = "1.17"
+val yarnBuild = "10"
 val loaderVersion = "0.11.3"
 
 val modVersion = "2.1.0"
@@ -11,8 +11,8 @@ val modGroup = "dev.joezwet"
 val modName = "FabricForwarding"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_16
+    targetCompatibility = JavaVersion.VERSION_16
     withSourcesJar()
 }
 
