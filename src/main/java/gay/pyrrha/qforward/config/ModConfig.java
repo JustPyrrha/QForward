@@ -20,19 +20,20 @@ import java.util.Optional;
 public class ModConfig {
     public static final Codec<ModConfig> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             Codec.BOOL.fieldOf("enable_forwarding").forGetter(config -> config.enableForwarding),
-            Codec.STRING.fieldOf("forwarding_secret").forGetter(config -> config.forwardingSecret)
+            Codec.STRING.fieldOf("forwarding_secret_file").forGetter(config -> config.forwardingSecretFile)
     ).apply(instance, ModConfig::new));
 
     private boolean enableForwarding;
-    private final String forwardingSecret;
+    private final String forwardingSecretFile;
+    private String forwardingSecret;
 
-    public ModConfig(boolean enableForwarding, String forwardingSecret) {
+    public ModConfig(boolean enableForwarding, String forwardingSecretFile) {
         this.enableForwarding = enableForwarding;
-        this.forwardingSecret = forwardingSecret;
+        this.forwardingSecretFile = forwardingSecretFile;
     }
 
     public ModConfig() {
-        this(false, "");
+        this(false, "forwarding.secret");
     }
 
     public boolean enableForwarding() {
@@ -44,6 +45,10 @@ public class ModConfig {
 
     public String forwardingSecret() {
         return this.forwardingSecret;
+    }
+
+    private void forwardingSecret(String value) {
+        this.forwardingSecret = value;
     }
 
     public static ModConfig load() {
@@ -68,11 +73,40 @@ public class ModConfig {
                 var result = CODEC.decode(JsonOps.INSTANCE, json).map(Pair::getFirst);
                 var error = result.error();
                 error.ifPresent(e -> QForward.LOGGER.warn("[QForward] Failed loading config: {}", e.message()));
-                return result.result().orElseGet(ModConfig::new);
+                var config = result.result().orElseGet(ModConfig::new);
+                config.forwardingSecret(readForwardingSecret(config));
+                return config;
             } catch (IOException e) {
                 QForward.LOGGER.warn("[QForward] Failed loading config.", e);
                 return new ModConfig();
             }
         }
+    }
+
+    private static String readForwardingSecret(ModConfig config) {
+        if(config.forwardingSecretFile.equals("")) return "";
+        if(config.forwardingSecretFile.startsWith("env:")) {
+            var envVar = config.forwardingSecretFile.substring("env:".length()).toUpperCase();
+            var secret = System.getenv(envVar);
+            if(secret == null) return "";
+            return secret;
+        }
+
+        var path = QuiltLoader.getConfigDir().resolve(config.forwardingSecretFile);
+        if(!Files.exists(path)) {
+            try {
+                Files.writeString(path, "");
+                QForward.LOGGER.warn("[QForward] Created missing forwarding secret file, ");
+            } catch (IOException e) {
+                QForward.LOGGER.warn("[QForward] Failed creating default forwarding secret file.", e);
+            }
+        } else {
+            try {
+                return Files.readString(path);
+            } catch (IOException e) {
+                QForward.LOGGER.warn("[QForward] Failed reading forwarding secret file.", e);
+            }
+        }
+        return "";
     }
 }
