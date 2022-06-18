@@ -34,6 +34,7 @@ public class ModConfig {
 
     public ModConfig() {
         this(false, "forwarding.secret");
+        this.forwardingSecret = this.readForwardingSecret();
     }
 
     public boolean enableForwarding() {
@@ -45,10 +46,6 @@ public class ModConfig {
 
     public String forwardingSecret() {
         return this.forwardingSecret;
-    }
-
-    private void forwardingSecret(String value) {
-        this.forwardingSecret = value;
     }
 
     public static ModConfig load() {
@@ -73,9 +70,7 @@ public class ModConfig {
                 var result = CODEC.decode(JsonOps.INSTANCE, json).map(Pair::getFirst);
                 var error = result.error();
                 error.ifPresent(e -> QForward.LOGGER.warn("[QForward] Failed loading config: {}", e.message()));
-                var config = result.result().orElseGet(ModConfig::new);
-                config.forwardingSecret(readForwardingSecret(config));
-                return config;
+                return result.result().orElseGet(ModConfig::new);
             } catch (IOException e) {
                 QForward.LOGGER.warn("[QForward] Failed loading config.", e);
                 return new ModConfig();
@@ -83,16 +78,16 @@ public class ModConfig {
         }
     }
 
-    private static String readForwardingSecret(ModConfig config) {
-        if(config.forwardingSecretFile.equals("")) return "";
-        if(config.forwardingSecretFile.startsWith("env:")) {
-            var envVar = config.forwardingSecretFile.substring("env:".length()).toUpperCase();
+    private String readForwardingSecret() {
+        if(this.forwardingSecretFile.equals("")) return "";
+        if(this.forwardingSecretFile.startsWith("env:")) {
+            var envVar = this.forwardingSecretFile.substring("env:".length()).toUpperCase();
             var secret = System.getenv(envVar);
             if(secret == null) return "";
             return secret;
         }
 
-        var path = QuiltLoader.getConfigDir().resolve(config.forwardingSecretFile);
+        var path = QuiltLoader.getConfigDir().resolve(this.forwardingSecretFile);
         if(!Files.exists(path)) {
             try {
                 Files.writeString(path, "");
