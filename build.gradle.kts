@@ -4,12 +4,7 @@ plugins {
     id("io.github.juuxel.loom-quiltflower") version "1.7.+"
 }
 
-val minecraftVersion = "1.18.2"
-val mappings = "24"
-val loaderVersion = "0.17.1-beta.1"
-val qslCoreVersion = "1.1.0-beta.17+1.18.2"
-
-val modVersion = "3.0.0"
+val modVersion = "3.1.0"
 val modGroup = "gay.pyrrha"
 val modName = "QForward"
 
@@ -20,9 +15,8 @@ java {
 }
 
 base { archivesName.set(modName) }
-version = "$modVersion+mc$minecraftVersion"
+version = "$modVersion+mc${libs.versions.minecraft.get()}"
 group = modGroup
-
 
 loom {
     runtimeOnlyLog4j.set(true)
@@ -30,12 +24,12 @@ loom {
 }
 
 dependencies {
-    minecraft("com.mojang:minecraft:$minecraftVersion")
+    minecraft(libs.minecraft)
     mappings(loom.layered {
-        addLayer(quiltMappings.mappings("org.quiltmc:quilt-mappings:${minecraftVersion}+build.${mappings}:v2"))
+        addLayer(quiltMappings.mappings("org.quiltmc:quilt-mappings:${libs.versions.quilt.mappings.get()}:v2"))
     })
-    modImplementation("org.quiltmc:quilt-loader:$loaderVersion")
-    modImplementation("org.quiltmc.qsl:core:$qslCoreVersion")
+    modImplementation(libs.quilt.loader)
+    modImplementation(libs.quilt.qsl.core.base)
 }
 
 tasks.processResources {
