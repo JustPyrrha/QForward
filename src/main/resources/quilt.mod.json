@@ -6,7 +6,7 @@
     "version": "${version}",
     "metadata": {
       "name": "QForward",
-      "description": "Adds proxy support to Quilt servers. (Velocity, Bungee, etc)",
+      "description": "Adds proxy support to Quilt servers. (Velocity, etc)",
       "contributors": {
         "JustPyrrha": "Owner"
       },
