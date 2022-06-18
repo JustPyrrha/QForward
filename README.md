@@ -1,9 +1,10 @@
-# FabricForwarding
-Proxy network support for Fabric modded servers.
+# QForward
+Proxy forwarding support for Quilt modded servers.
                                                                                                                                           
 ## Proxy Support
-Current FabricForwarding supports all proxies that use either legacy forwarding (like BungeeCord) and modern forwarding (like Velocity).
+QForward currently supports Velocity v1 forwarding.
                                                                                                                                           
-You can change which IP forwarding method to use in `config/fabric-frowarding.json` by change the `mode` value. Options avaliable are `OFF` for none, `LEGACY` for BungeeCord-style or `MODERN` for modern/Velocity style.
+You can change which IP forwarding method to use in `config/qforward.json` by change the `mode` value. 
+Options available are `OFF` for none, `MODERN` for Velocity v1 forwarding.
                                                                                                                                           
-If you have `"mode":"MODERN"` you **MUST** put the secret key from your proxy in the `secret` value or your proxy wont let anyone connect.
+If you have `"mode":"MODERN"` you **MUST** put the secret key from your proxy in the `secret` value or your proxy won't let anyone connect.

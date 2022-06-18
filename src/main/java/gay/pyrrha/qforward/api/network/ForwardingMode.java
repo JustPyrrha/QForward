@@ -1,4 +1,4 @@
-package dev.joezwet.fabricforwarding.api.network;
+package gay.pyrrha.qforward.api.network;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -9,10 +9,6 @@ public enum ForwardingMode {
      * No forwarding
      */
     OFF,
-    /**
-     * Bungeecord-style legacy forwarding
-     */
-    LEGACY,
     /**
      * Modern forwarding, used by Velocity
      */

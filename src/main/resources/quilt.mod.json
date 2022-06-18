@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "quilt_loader": {
+    "group": "gay.pyrrha",
+    "id": "qforward",
+    "version": "${version}",
+    "metadata": {
+      "name": "QForward",
+      "description": "Adds proxy support to Quilt servers. (Velocity, Bungee, etc)",
+      "contributors": {
+        "JustPyrrha": "Owner"
+      },
+      "contact": {
+        "issues": "https://github.com/JustPyrrha/QForward/issues",
+        "sources": "https://github.com/JustPyrrha/QForward/"
+      },
+      "icon": "assets/qforward/icon.png"
+    },
+    "intermediate_mappings": "net.fabricmc:intermediary",
+    "entrypoints": {
+      "server_init": "gay.pyrrha.qforward.QForward"
+    },
+    "depends": [
+      {
+        "id": "quilt_loader",
+        "versions": ">=0.16.0-"
+      },
+      {
+        "id": "minecraft",
+        "versions": ">=1.18.2"
+      }
+    ]
+  },
+  "minecraft": {
+    "environment": "dedicated_server"
+  },
+  "mixin": "qforward.mixins.json"
+}

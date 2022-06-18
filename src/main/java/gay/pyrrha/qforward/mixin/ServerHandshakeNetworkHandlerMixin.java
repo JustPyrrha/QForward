@@ -1,11 +1,11 @@
-package dev.joezwet.fabricforwarding.mixin;
+package gay.pyrrha.qforward.mixin;
 
 import com.google.gson.Gson;
 import com.mojang.authlib.properties.Property;
 import com.mojang.util.UUIDTypeAdapter;
-import dev.joezwet.fabricforwarding.api.config.Config;
-import dev.joezwet.fabricforwarding.api.network.ClientConnectionBridge;
-import dev.joezwet.fabricforwarding.api.network.ForwardingMode;
+import gay.pyrrha.qforward.api.config.Config;
+import gay.pyrrha.qforward.api.network.ClientConnectionBridge;
+import gay.pyrrha.qforward.api.network.ForwardingMode;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.network.ClientConnection;
@@ -34,7 +34,7 @@ public class ServerHandshakeNetworkHandlerMixin {
 
     @Inject(method = "onHandshake", at = @At("HEAD"))
     private void onHandshake(HandshakeC2SPacket packet, CallbackInfo info) {
-        if((Config.getInstance().getMode().equals(ForwardingMode.LEGACY) || Config.getInstance().getMode().equals(ForwardingMode.MODERN)) && packet.getIntendedState().equals(NetworkState.LOGIN)) {
+        if(Config.getInstance().getMode().equals(ForwardingMode.MODERN) && packet.getIntendedState().equals(NetworkState.LOGIN)) {
             String[] addressSplit = packet.address.split("\00\\|", 2)[0].split("\00");
 
             if(addressSplit.length == 3 || addressSplit.length == 4) {

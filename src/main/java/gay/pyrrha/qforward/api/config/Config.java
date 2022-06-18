@@ -1,18 +1,15 @@
-package dev.joezwet.fabricforwarding.api.config;
+package gay.pyrrha.qforward.api.config;
 
-import dev.joezwet.fabricforwarding.api.network.ForwardingMode;
+import gay.pyrrha.qforward.api.network.ForwardingMode;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 
 @Environment(EnvType.SERVER)
 public interface Config {
-
     static Config getInstance() {
         return ConfigManager.getInstance().get();
     }
-
     ForwardingMode getMode();
     byte[] getSecret();
-
     void invalidMode();
 }

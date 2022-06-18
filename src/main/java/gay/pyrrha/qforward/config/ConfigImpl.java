@@ -1,9 +1,9 @@
-package dev.joezwet.fabricforwarding.config;
+package gay.pyrrha.qforward.config;
 
 import com.google.common.base.Charsets;
 import com.google.gson.annotations.Expose;
-import dev.joezwet.fabricforwarding.api.config.Config;
-import dev.joezwet.fabricforwarding.api.network.ForwardingMode;
+import gay.pyrrha.qforward.api.config.Config;
+import gay.pyrrha.qforward.api.network.ForwardingMode;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 

@@ -1,8 +1,8 @@
-package dev.joezwet.fabricforwarding.mixin;
+package gay.pyrrha.qforward.mixin;
 
 
-import dev.joezwet.fabricforwarding.api.config.Config;
-import dev.joezwet.fabricforwarding.api.network.ForwardingMode;
+import gay.pyrrha.qforward.api.config.Config;
+import gay.pyrrha.qforward.api.network.ForwardingMode;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.server.MinecraftServer;
@@ -17,6 +17,7 @@ public class MinecraftServerMixin {
 
     @Inject(method = "getNetworkCompressionThreshold", at = @At("RETURN"), cancellable = true)
     public void getNetworkCompressionThreshold(CallbackInfoReturnable<Integer> cir) {
-        cir.setReturnValue(Config.getInstance().getMode().equals(ForwardingMode.OFF) ? 256 : -1);
+        if(!Config.getInstance().getMode().equals(ForwardingMode.OFF))
+            cir.setReturnValue(-1);
     }
 }

@@ -1,13 +1,13 @@
-package dev.joezwet.fabricforwarding.mixin;
+package gay.pyrrha.qforward.mixin;
 
 import com.google.common.base.Charsets;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-import dev.joezwet.fabricforwarding.api.config.Config;
-import dev.joezwet.fabricforwarding.api.network.ClientConnectionBridge;
-import dev.joezwet.fabricforwarding.api.network.ForwardingMode;
+import gay.pyrrha.qforward.api.config.Config;
+import gay.pyrrha.qforward.api.network.ClientConnectionBridge;
+import gay.pyrrha.qforward.api.network.ForwardingMode;
+import gay.pyrrha.qforward.proxy.Velocity;
 import io.netty.buffer.Unpooled;
-import dev.joezwet.fabricforwarding.proxy.Velocity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.network.ClientConnection;
@@ -27,7 +27,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.Random;
 import java.util.UUID;
@@ -35,44 +34,13 @@ import java.util.UUID;
 @Environment(EnvType.SERVER)
 @Mixin(ServerLoginNetworkHandler.class)
 public abstract class ServerLoginNetworkHandlerMixin {
-
+    @Shadow @Final private static Random RANDOM;
     @Shadow @Final private MinecraftServer server;
     @Shadow @Final public ClientConnection connection;
     @Shadow private GameProfile profile;
-    @Shadow public abstract void disconnect(Text reason);
-
-    @Shadow public abstract void acceptPlayer();
-
-    @Shadow @Final private static Random RANDOM;
     private int velocityLoginMsgId = -1;
-
-    @Inject(method = "onHello",
-        at = @At(
-                value = "FIELD",
-                target = "Lnet/minecraft/server/network/ServerLoginNetworkHandler;profile:Lcom/mojang/authlib/GameProfile;",
-                opcode = Opcodes.PUTFIELD,
-                ordinal = 0,
-                shift = At.Shift.AFTER
-        )
-    )
-    private void onHelloBungee(LoginHelloC2SPacket packet, CallbackInfo info) {
-        if(Config.getInstance().getMode().equals(ForwardingMode.LEGACY) && !this.server.isOnlineMode()) {
-            final UUID uuid;
-            if(((ClientConnectionBridge)this.connection).getSpoofedUUID() != null) {
-                uuid = ((ClientConnectionBridge)this.connection).getSpoofedUUID();
-            } else {
-                uuid = UUID.nameUUIDFromBytes(("OfflinePlayer:" + this.profile.getName()).getBytes(Charsets.UTF_8));
-            }
-
-            this.profile = new GameProfile(uuid, this.profile.getName());
-
-            if(((ClientConnectionBridge)this.connection).getSpoofedProfile() != null) {
-                for(final Property p : ((ClientConnectionBridge)this.connection).getSpoofedProfile()) {
-                    this.profile.getProperties().put(p.getName(), p);
-                }
-            }
-        }
-    }
+    @Shadow public abstract void disconnect(Text reason);
+    @Shadow public abstract void acceptPlayer();
 
     @Inject(method = "onHello",
             at = @At(

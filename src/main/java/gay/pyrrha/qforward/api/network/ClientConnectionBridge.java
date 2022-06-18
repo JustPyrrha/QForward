@@ -1,6 +1,5 @@
-package dev.joezwet.fabricforwarding.api.network;
+package gay.pyrrha.qforward.api.network;
 
-import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

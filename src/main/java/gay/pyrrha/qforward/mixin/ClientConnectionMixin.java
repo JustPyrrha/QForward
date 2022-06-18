@@ -1,8 +1,8 @@
-package dev.joezwet.fabricforwarding.mixin;
+package gay.pyrrha.qforward.mixin;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-import dev.joezwet.fabricforwarding.api.network.ClientConnectionBridge;
+import gay.pyrrha.qforward.api.network.ClientConnectionBridge;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.network.ClientConnection;
@@ -15,7 +15,6 @@ import java.util.UUID;
 @Environment(EnvType.SERVER)
 @Mixin(ClientConnection.class)
 public class ClientConnectionMixin implements ClientConnectionBridge {
-
     @Shadow private SocketAddress address;
     private UUID spoofedUUID;
     private Property[] spoofedProfile;
